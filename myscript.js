@@ -25,27 +25,22 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Enter Choice: ").toLowerCase()
-        let computerSelection = getComputerChoice();
+function game(playerChoice) {
+    let playerSelection = playerChoice;
+    let computerSelection = getComputerChoice();
 
-        let winner = playRound(playerSelection, computerSelection)
-        if (winner == "Tie") {
-            console.log("Tie")
-        } else if (winner == "Player") {
-            console.log("You win " + playerSelection + " beats " + computerSelection)
-            playerScore += 1
-        }
-        else {
-            console.log("You lose " + computerSelection + " beats " + playerSelection)
-            computerScore += 1
-        }
-        console.log("Player: " + playerScore + ", Computer Score: " + computerScore)
+    let winner = playRound(playerSelection, computerSelection)
+    if (winner == "Tie") {
+        console.log("Tie")
+    } else if (winner == "Player") {
+        console.log("You win " + playerSelection + " beats " + computerSelection)
+        playerScore += 1
     }
-
+    else {
+        console.log("You lose " + computerSelection + " beats " + playerSelection)
+        computerScore += 1
+    }
+    console.log("Player: " + playerScore + ", Computer Score: " + computerScore)
     // reports winner
     if (playerScore == computerScore) {
         console.log("Tie")
@@ -55,5 +50,11 @@ function game() {
         console.log("Computer wins")
     }
 }
+// adding a event listener for all three choices 
+document.querySelectorAll('button').forEach(item => {
+    item.addEventListener('click', event => {
+        game(event.target.value);
+    })
+})
 
 game();
