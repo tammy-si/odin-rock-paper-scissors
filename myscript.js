@@ -48,6 +48,17 @@ function game(playerChoice) {
     let computer_score_info = document.querySelector('.computerScore')
     player_score_info.textContent = "Player Score: " + playerScore;
     computer_score_info.textContent = "Computer Score: " + computerScore;
+    const winner_display = document.querySelector('.winner')
+    winner_display.textContent = ""
+    if (computerScore == 5) {
+        winner_display.textContent = "Computer Won!"
+    } else if (playerScore == 5) {
+        winner_display.textContent = "Player Won!"
+    } else {
+        return
+    }
+    playerScore = 0
+    computerScore = 0
 }
 // adding a event listener for all three choices 
 document.querySelectorAll('button').forEach(item => {
