@@ -29,15 +29,18 @@ function game(playerChoice) {
     let playerSelection = playerChoice;
     let computerSelection = getComputerChoice();
 
+
+    const result_display = document.querySelector(".round-results")
+    console.log(result_display)
     let winner = playRound(playerSelection, computerSelection)
     if (winner == "Tie") {
-        console.log("Tie")
+        result_display.textContent = "Tie"
     } else if (winner == "Player") {
-        console.log("You win " + playerSelection + " beats " + computerSelection)
+        result_display.textContent = "You win. " + playerSelection + " beats " + computerSelection
         playerScore += 1
     }
     else {
-        console.log("You lose " + computerSelection + " beats " + playerSelection)
+        result_display.textContent = "You lose. " + computerSelection + " beats " + playerSelection
         computerScore += 1
     }
     console.log("Player: " + playerScore + ", Computer Score: " + computerScore)
