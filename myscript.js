@@ -12,7 +12,6 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    console.log(playerSelection, computerSelection)
     if (playerSelection == computerSelection) {
         return "Tie";
     } else if ((playerSelection == "rock" && computerSelection == "scissors") || 
