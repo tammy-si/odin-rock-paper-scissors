@@ -25,13 +25,14 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// keeping count of the scores
+var playerScore = 0;
+var computerScore = 0;
 function game(playerChoice) {
     let playerSelection = playerChoice;
     let computerSelection = getComputerChoice();
 
-
     const result_display = document.querySelector(".round-results")
-    console.log(result_display)
     let winner = playRound(playerSelection, computerSelection)
     if (winner == "Tie") {
         result_display.textContent = "Tie"
@@ -43,15 +44,10 @@ function game(playerChoice) {
         result_display.textContent = "You lose. " + computerSelection + " beats " + playerSelection
         computerScore += 1
     }
-    console.log("Player: " + playerScore + ", Computer Score: " + computerScore)
-    // reports winner
-    if (playerScore == computerScore) {
-        console.log("Tie")
-    } else if (playerScore > computerScore) {
-        console.log("Player wins")
-    } else {
-        console.log("Computer wins")
-    }
+    let player_score_info = document.querySelector('.playerScore')
+    let computer_score_info = document.querySelector('.computerScore')
+    player_score_info.textContent = "Player Score: " + playerScore;
+    computer_score_info.textContent = "Computer Score: " + computerScore;
 }
 // adding a event listener for all three choices 
 document.querySelectorAll('button').forEach(item => {
@@ -59,5 +55,3 @@ document.querySelectorAll('button').forEach(item => {
         game(event.target.value);
     })
 })
-
-game();
